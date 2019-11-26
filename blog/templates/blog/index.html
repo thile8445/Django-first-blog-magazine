@@ -1,0 +1,53 @@
+{% extends "home/base.html" %}
+{% load staticfiles %}
+{% block top_post_main %}
+{% for x in postf %}
+<div class="col-lg-8 top-post-left">
+	<div class="feature-image-thumb relative">
+		<div class="overlay overlay-bg"></div>
+		<a href="{% url 'view' x.id %}"><img class="img-fluid" src="{{x.image.url}}"  alt=""></a>
+	</div>
+	<div class="top-post-details">
+		<ul class="tags">
+			<li><a href="#">{{x.posttype}}</a></li>
+		</ul>
+		<a href="image-post.html">
+			<h3>{{x.title}}</h3>
+		</a>
+		<ul class="meta">
+			<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>
+			<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+		</ul>
+	</div>
+</div>	
+{% endfor %}
+	
+
+
+{% endblock top_post_main %}
+{% block top_post %}
+{% for x in subpost  %}
+<div class="single-top-post">
+	<div class="feature-image-thumb relative">
+		<div class="overlay overlay-bg"></div>
+		<a href="{% url 'view' x.id %}"><img class="img-fluid" src="{{x.image.url}}" alt="sadasdasdasd"></a>
+	</div>
+	<div class="top-post-details">
+		<ul class="tags">
+			<li><a href="#">{{x.posttype}}</a></li>
+		</ul>
+		<a href="{% url 'view' x.id %}">
+			<h4>{{x.title}}</h4>
+		</a>
+		<ul class="meta">
+			<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>
+			<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+		</ul>
+	</div>
+</div>
+<br>	
+{% endfor %}
+
+{% endblock top_post %}
