@@ -1,7 +1,9 @@
 from django.shortcuts import render ,get_object_or_404
 from .models import Post,Comment
+from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView,DetailView
+from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
 	post = Post.objects.all().order_by("-date")
@@ -15,5 +17,12 @@ def view(request,pk):
 	posts = Post.objects.filter(pk = pk)
 	# post = get_object_or_404( Post , pk=pk)
 	# post = post(pk = pk)
-	return render(request,"blog/view.html",{"posts":posts})
+	form = CommentForm()
+	if request.method == 'POST':
+		form = CommentForm(request.post ,author = request.user ,post = post)
+		if form.is_valid():
+			form.save()
+			sl = len(form.Comment.all)
+			return HttpResponseRedirect(request.path)
+	return render(request,"blog/view.html",{"posts":posts,"form":form })
 
