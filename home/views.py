@@ -2,13 +2,17 @@ from django.shortcuts import render ,redirect,HttpResponseRedirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout as auth_logout
+from blog.models import  Post,Comment
 # Create your views here.
 def index(request):
 	return render(request,"home/base.html")
 def logout(request):
 	auth_logout(request)
 	# return HttpResponseRedirect('/')
-	return render(request,"/")
+	post = Post.objects.all().order_by("-date")
+	postf = post[0:1]
+	subpost = post[1:3]
+	return render(request,"blog/index.html",{"posts":post,"postf":postf,"subpost":subpost})
 
 def register(request):
     if request.method != 'POST':
