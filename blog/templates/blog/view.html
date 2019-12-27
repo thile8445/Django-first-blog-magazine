@@ -1,30 +1,30 @@
 {% extends "home/base_view.html" %}
 {% load static %}
 {% block post_view %}
-{% for x in post %}
+
 <div class="single-post-wrap">
 	<div class="feature-img-thumb relative">
 		<div class="overlay overlay-bg"></div>
-		<img class="img-fluid" src="{{x.image.url}}" alt="anh">
+		<img class="img-fluid" src="{{post.image.url}}" alt="anh">
 	</div>
 
 	<div class="content-wrap">
 		<ul class="tags mt-10">
-			<li><a href="#">{{x.posttype}}</a></li>
+			<li><a href="#">{{post.posttype}}</a></li>
 		</ul>
 		<a href="#">
-			<h3>{{x.title}}</h3>
+			<h3>{{post.title}}</h3>
 		</a>
 		<ul class="meta pb-20">
 			<li><a href="#"><span class="lnr lnr-user"></span>{{user.username}}</a></li>
-			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>
+			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{post.date}}</a></li>
 			
 		</ul>
-		<p>{{x.body}}.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>{{post.body}}.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		<div class="comment-sec-area">
 			<div class="container">
 				<div class="row flex-column">					
-					{% for cmt in x.comments.all %}					
+					{% for cmt in post.comments.all %}					
 					<div class="comment-list">
 						<div class="single-comment justify-content-between d-flex">
 							<div class="user justify-content-between d-flex">								
@@ -44,7 +44,7 @@
 {% if user.is_authenticated %}
 	<div class="comment-form">
 		<h4>Post Comment</h4>
-		<form action="{% url 'view' x.id %}" method="post">
+		<form action="{% url 'view' post.id %}" method="post">
 			<div class="form-group">
 				{% csrf_token %}
 				{{form.body}}
@@ -55,5 +55,5 @@
 	</div>
 	{% endif %}
 </div>
-{% endfor %}	
+	
 {% endblock post_view %}

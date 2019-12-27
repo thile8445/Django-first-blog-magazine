@@ -12,7 +12,8 @@ def index(request):
 	return render(request,"blog/index.html",{"posts":post,"postf":postf,"subpost":subpost})
 
 def view(request,pk):
-	post = Post.objects.filter(pk = pk)
+	post = get_object_or_404(Post,pk = pk)
+	print(post)
 	form = CommentForm()
 	if request.method == 'POST':
 		form = CommentForm(request.POST,author = request.user ,post = post)
