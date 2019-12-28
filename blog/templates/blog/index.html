@@ -14,17 +14,12 @@
 		<a href="image-post.html">
 			<h3>{{x.title}}</h3>
 		</a>
-		<ul class="meta">
-			<li><a href="#"><span class="lnr lnr-user"></span>{{user.username}}</a></li>
-			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>
-			
+		<ul class="meta">		
+			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>			
 		</ul>
 	</div>
 </div>	
 {% endfor %}
-	
-
-
 {% endblock top_post_main %}
 {% block top_post %}
 {% for x in subpost  %}
@@ -40,18 +35,14 @@
 		<a href="{% url 'view' x.id %}">
 			<h4>{{x.title}}</h4>
 		</a>
-		<ul class="meta">
-			<li><a href="#"><span class="lnr lnr-user"></span>{{user.username}}</a></li>
-			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>
-			
+		<ul class="meta">			
+			<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>			
 		</ul>
 	</div>
 </div>
 <br>	
 {% endfor %}
-
 {% endblock top_post %}
-
 {% block last_new %}
 {% for x in  postl%}
 <div class="single-latest-post row align-items-center">
@@ -69,7 +60,6 @@
 			<h4>{{x.title}}</h4>
 			</a>
 		<ul class="meta">
-		<li><a href="#"><span class="lnr lnr-user"></span>{{user.username}}</a></li>
 		<li><a href="#"><span class="lnr lnr-calendar-full"></span>{{x.date}}</a></li>
 		</ul>
 		<p>

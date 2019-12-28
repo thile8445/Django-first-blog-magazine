@@ -14,7 +14,6 @@ def index(request):
 
 def view(request,pk):
 	post = get_object_or_404(Post,pk = pk)
-	print(post)
 	form = CommentForm()
 	if request.method == 'POST':
 		form = CommentForm(request.POST,author = request.user ,post = post)

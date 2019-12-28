@@ -10,9 +10,10 @@ def logout(request):
 	auth_logout(request)
 	# return HttpResponseRedirect('/')
 	post = Post.objects.all().order_by("-date")
+	postl=post[3:8]
 	postf = post[0:1]
 	subpost = post[1:3]
-	return render(request,"blog/index.html",{"posts":post,"postf":postf,"subpost":subpost})
+	return render(request,"blog/index.html",{"posts":post,"postf":postf,"subpost":subpost,"postl":postl})
 
 def register(request):
     if request.method != 'POST':
