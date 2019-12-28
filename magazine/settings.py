@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'home',
     'blog',
+    
+    
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
